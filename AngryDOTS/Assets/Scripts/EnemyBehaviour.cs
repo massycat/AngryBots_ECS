@@ -7,6 +7,8 @@ public class EnemyBehaviour : MonoBehaviour, IConvertGameObjectToEntity
 	[Header("Movement")]
 	public float speed = 2f;
 
+    public float turnSpeed = 1.0f;
+
 	[Header("Life Settings")]
 	public float enemyHealth = 1f;
 
@@ -22,9 +24,33 @@ public class EnemyBehaviour : MonoBehaviour, IConvertGameObjectToEntity
 	{
 		if (!Settings.IsPlayerDead())
 		{
-			Vector3 heading = Settings.PlayerPosition - transform.position;
+#if true
+            Quaternion q1 = transform.rotation;
+            Vector3 target_heading = Settings.PlayerPosition - transform.position;
+            target_heading.y = 0f;
+            target_heading.Normalize();
+            Quaternion q2 = Quaternion.LookRotation(target_heading, Vector3.up);
+
+            float angle = Quaternion.Angle(q1, q2) * Mathf.Deg2Rad;
+
+            float turn_angle = turnSpeed * Time.deltaTime;
+
+            if (turn_angle < Mathf.Abs(angle))
+            {
+                float t = turn_angle / Mathf.Abs(angle);
+                Quaternion q3 = Quaternion.Slerp(q1, q2, t);
+
+                transform.rotation = q3;
+            }
+            else
+            {
+                transform.rotation = q2;
+            }
+#else
+            Vector3 heading = Settings.PlayerPosition - transform.position;
 			heading.y = 0f;
 			transform.rotation = Quaternion.LookRotation(heading);
+#endif
 		}
 
 		Vector3 movement = transform.forward * speed * Time.deltaTime;
@@ -48,7 +74,10 @@ public class EnemyBehaviour : MonoBehaviour, IConvertGameObjectToEntity
 		manager.AddComponent(entity, typeof(EnemyTag));
 		manager.AddComponent(entity, typeof(MoveForward));
 
-		MoveSpeed moveSpeed = new MoveSpeed { Value = speed };
+        RogueUtils.TurnSpeed turn_speed = new RogueUtils.TurnSpeed { Value = turnSpeed };
+        manager.AddComponentData(entity, turn_speed);
+
+        MoveSpeed moveSpeed = new MoveSpeed { Value = speed };
 		manager.AddComponentData(entity, moveSpeed);
 
 		Health health = new Health { Value = enemyHealth };
