@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 40720117310710383}
   - component: {fileID: 40720117313577551}
   - component: {fileID: 40720117312610447}
-  - component: {fileID: 40720117310585068}
-  - component: {fileID: 40720117310585069}
   - component: {fileID: 2114627309}
+  - component: {fileID: 5971352348972537308}
+  - component: {fileID: 4415722621000877732}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -80,36 +80,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!54 &40720117310585068
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 40720117310684751}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!136 &40720117310585069
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 40720117310684751}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.2
-  m_Height: 1
-  m_Direction: 2
-  m_Center: {x: 0.00000018626451, y: 0.06914486, z: 0.24}
 --- !u!114 &2114627309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,3 +95,109 @@ MonoBehaviour:
   speed: 2
   turnSpeed: 0.25
   enemyHealth: 1
+--- !u!114 &5971352348972537308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40720117310684751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccea9ea98e38942e0b0938c27ed1903e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MotionType: 0
+  m_Mass: 1
+  m_LinearDamping: 0.01
+  m_AngularDamping: 0.05
+  m_InitialLinearVelocity:
+    x: 0
+    y: 0
+    z: 0
+  m_InitialAngularVelocity:
+    x: 0
+    y: 0
+    z: 0
+  m_GravityFactor: 0
+  m_OverrideDefaultMassDistribution: 0
+  m_CenterOfMass:
+    x: 0
+    y: 0
+    z: 0
+  m_Orientation:
+    Value:
+      x: 0
+      y: 0
+      z: 0
+    RotationOrder: 4
+  m_InertiaTensor:
+    x: 0.4
+    y: 0.4
+    z: 0.4
+--- !u!114 &4415722621000877732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40720117310684751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b275e5f92732148048d7b77e264ac30e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShapeType: 1
+  m_PrimitiveCenter:
+    x: 0.0000001937151
+    y: 0.06914486
+    z: -0.42603946
+  m_PrimitiveSize:
+    x: 0.42796454
+    y: 0.42796454
+    z: 2.7212443
+  m_PrimitiveOrientation:
+    Value:
+      x: -0
+      y: 0
+      z: 0
+    RotationOrder: 4
+  m_Capsule:
+    Height: 2.7212443
+    Radius: 0.21398227
+    Axis: 2
+  m_Cylinder:
+    Height: 2.7212443
+    Radius: 0.21398227
+    Axis: 2
+  m_SphereRadius: 1.3606222
+  m_ConvexRadius: 0.032973867
+  m_CustomMesh: {fileID: 0}
+  m_Material:
+    m_SupportsTemplate: 1
+    m_Template: {fileID: 0}
+    m_IsTrigger:
+      m_Override: 0
+      m_Value: 1
+    m_Friction:
+      m_Override: 0
+      m_Value:
+        Value: 0.5
+        CombineMode: 0
+    m_Restitution:
+      m_Override: 0
+      m_Value:
+        Value: 0
+        CombineMode: 2
+    m_BelongsTo:
+      m_Override: 0
+      m_Value: 0001000000000000000000000000000000000000000000000000000000000000
+    m_CollidesWith:
+      m_Override: 0
+      m_Value: 0100000000000000000000000000000000000000000000000000000000000000
+    m_RaisesCollisionEvents:
+      m_Override: 0
+      m_Value: 1
+    m_CustomFlags:
+      m_Override: 0
+      m_Value: 0000000000000000

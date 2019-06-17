@@ -1,7 +1,7 @@
 ﻿using Unity.Entities;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+//[RequireComponent(typeof(Rigidbody))]
 public class EnemyBehaviour : MonoBehaviour, IConvertGameObjectToEntity
 {
 	[Header("Movement")]
@@ -54,8 +54,11 @@ public class EnemyBehaviour : MonoBehaviour, IConvertGameObjectToEntity
 		}
 
 		Vector3 movement = transform.forward * speed * Time.deltaTime;
-		rigidBody.MovePosition(transform.position + movement);
-	}
+        if (rigidBody != null)
+        {
+            rigidBody.MovePosition(transform.position + movement);
+        }
+    }
 
 	void OnTriggerEnter(Collider theCollider)
 	{

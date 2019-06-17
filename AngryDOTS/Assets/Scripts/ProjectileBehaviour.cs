@@ -1,7 +1,6 @@
 ﻿using Unity.Entities;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class ProjectileBehaviour : MonoBehaviour, IConvertGameObjectToEntity
 {
 	[Header("Movement")]
@@ -22,8 +21,11 @@ public class ProjectileBehaviour : MonoBehaviour, IConvertGameObjectToEntity
 	void Update()
 	{
 		Vector3 movement = transform.forward * speed * Time.deltaTime;
-		projectileRigidbody.MovePosition(transform.position + movement);
-	}
+        if (projectileRigidbody != null)
+        {
+            projectileRigidbody.MovePosition(transform.position + movement);
+        }
+    }
 
 	void OnTriggerEnter(Collider theCollider)
 	{

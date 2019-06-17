@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
 	public GameObject enemyPrefab;
 
 	[Header("Enemy Spawn Timing")]
-	[Range(1, 100)] public int spawnsPerInterval = 1;
+	[Range(0, 100)] public int spawnsPerInterval = 1;
 	[Range(.1f, 2f)] public float spawnInterval = 1f;
 	
 	EntityManager manager;

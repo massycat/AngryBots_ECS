@@ -5,6 +5,7 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
 
+#if false
 [UpdateAfter(typeof(MoveForwardSystem))]
 [UpdateBefore(typeof(TimedDestroySystem))]
 public class CollisionSystem : JobComponentSystem
@@ -156,3 +157,4 @@ public class CollisionSystem : JobComponentSystem
 		return distanceSquare <= radiusSqr;
 	}
 }
+#endif
